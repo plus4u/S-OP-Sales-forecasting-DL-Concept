@@ -1,0 +1,31 @@
+# keras + nomalization
+
+from keras.utils import np_utils
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers import Dense, Activation
+
+import numpy as np
+from sklearn.preprocessing import minmax_scale
+import matplotlib.pyplot as plt
+
+
+model = Sequential()
+
+model.add(Dense(units=6, input_dim=2, activation='relu'))
+# model.add(Dense(units=6, activation='relu'))
+
+model.add(Dense(1))
+
+# optimizer = tf.keras.optimizers.RMSprop(0.001)
+# model.compile(loss='mse',optimizer=optimizer, metrics=['mae', 'mse'])
+# model.compile(loss='mean_squared_error', optimizer='adam')
+#  MSE는 손실함수 /  MAE는 회귀지표로써 사용
+
+model.compile(optimizer='rmsprop', loss='mse', metrics=['mae']) 
+              
+# model.compile(loss='categorical_crossentropy', optimizer='sgd', metrics=['accuracy'])
+
+hist = model.fit(x_train_a, y_train, epochs=250, batch_size=1)
+
+# hist = model.fit(x_train, Y_train, epochs=1000, batch_size=10, validation_data=(X_val, Y_val))
