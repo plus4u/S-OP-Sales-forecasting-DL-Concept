@@ -1,0 +1,23 @@
+## data 
+
+import numpy as np
+from sklearn.preprocessing import minmax_scale
+
+xy = np.loadtxt('air_pax_1.csv', delimiter=',', dtype=np.float32)
+
+# normalization
+
+xy = minmax_scale(xy, axis=0, copy=True) 
+
+# x_train_a = xy[:60, 0:-1]
+x_train_a = xy[:60, 0: 2]
+# x_train_b = xy[:60, 1:2 ]
+
+# y_data = xy[:, [-1]]
+y_train = xy[ :60, -1]
+
+# x_test_a = xy[60:, 0: -1]
+x_test_a = xy[60:, 0: 2]
+# x_test_b = xy[60:, 1:2]
+
+y_test = xy[ 60:, -1]
