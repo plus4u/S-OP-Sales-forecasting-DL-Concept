@@ -1,0 +1,7 @@
+## mount google drive
+
+from google.colab import drive
+
+# drive.mount('/content/gdrive/MyDrive')
+
+drive.mount('/content/gdrive')
